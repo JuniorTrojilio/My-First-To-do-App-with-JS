@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+body{
+  margin : 0;
+}
+nav {  
+  margin : 0;
+  padding : 10px;
+  font-family : Arial;
+  color : white; 
+  background-color : #2c3e50;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  cursor : pointer;
+}
+
+.forms{
+  margin : 0;
+  padding : 20px;
+}
+
+.create {
+  margin : 1px;
+  padding : 15px 30px;
+  border-radius : 5px;
+  color : white;
+  border : 0;
+  cursor : pointer;
+  font-size : 18px; 
+  background-color : #009432;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.create:hover{
+    background-color : #27ae60;
+}
+
+.inputitem {
+  padding : 15px;
+  border-radius : 5px;
+  border: 1px solid #2c3e50;
+  font-size : 18px;
+  width : 300px;
+}
+
+.toplist {
+  margin : 0;
+  padding-left : 20px;
+  font-family : arial;
+  font-size : 18px;
+  color : #2f3542;
+}
+
+li {
+  font-size : 18px;
+  font-family : arial;
+  background-color : #ced6e0;
+  padding : 10px;
+  border-radius : 5px;
+  width : 300px;
+  display: inline-block;
+}
+
+.delete{
+  background-color : #ff4757 ;
+  border:0;
+  color : white;
+  padding : 13px;
+  border-radius: 5px;
+  cursor : pointer;
+}
+
+.delete:hover {
+  background-color : #ff6b81 ;  
+}
+
+.listaitem{
+  display : relative;
+  margin : 5px;
+}
+
+
+  </style>
+  <title>My First To-do App</title>
+</head>
+<body>
+  <nav>
+    <div>
+        <h1 id="tittle">To-Do App</h1> 
+    </div>     
+  </nav> 
+  
+  <div class="forms">
+  <form id="ourForm">
+    <input type="text" autocomplete="off" class="inputitem" id="ourField" maxlength=30>
+    <button class="create">Create Item</button>
+  </form>  
+  </div> 
+  
+  <div class="toplist">
+    <h3>Need to do</h3>  
+    <hr>
+  </div>
+    <ul id="ourList">
+  </ul>
+
+  <script>
+let tittle = document.getElementById("tittle")
+let ourForm = document.getElementById("ourForm")
+let ourField = document.getElementById("ourField")
+let ourList = document.getElementById("ourList")
+
+ourForm.addEventListener("submit", (e) => {
+   e.preventDefault()
+  createItem(ourField.value)
+})
+
+function createItem(x){
+  let ourHTML = `<div class="listaitem"> <li>${x}</li> <button class="delete" onclick="deleteItem(this)"> Delete</button> </div>`
+  ourList.insertAdjacentHTML("beforeend", ourHTML)  
+  ourField.value = ""
+  ourField.focus()
+}
+
+function deleteItem(elementToDelete){
+  elementToDelete.parentElement.remove()
+}
+
+tittle.addEventListener("click", (e) => {
+  e.preventDefault()
+  alert("Hello this is my first to-do-app")
+})
+  </script>
+</body>
+</html>
